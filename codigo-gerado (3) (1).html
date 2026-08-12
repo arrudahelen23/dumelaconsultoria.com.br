@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dumela Consultoria — Gestão e Desenvolvimento Organizacional</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{azul:'#292A61',magenta:'#F0127A',verde:'#62C2AC',roxo:'#6457A4',amarelo:'#FDB712',grafite:'#1C1D2B',offwhite:'#FAFAF8'},fontFamily:{display:['Space Grotesk','sans-serif'],body:['Inter','sans-serif']}}}}
+</script>
+<style>
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;overflow-x:hidden;min-width:320px}
+img,svg{max-width:100%;height:auto}
+section[id]{scroll-margin-top:5rem}
+.mob{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.mob.open{max-height:420px}
+button,a{-webkit-tap-highlight-color:transparent}
+@media(max-width:767px){
+  header .h-20{height:4.25rem}
+  header .px-5{padding-left:1rem;padding-right:1rem}
+  header a.flex.items-center{min-width:0;gap:.55rem}
+  header a.flex.items-center>span{min-width:0}
+  header a.flex.items-center>span>span:first-child{font-size:.42rem;letter-spacing:.1em;white-space:normal;line-height:1.15;max-width:13rem}
+  header a.flex.items-center>span>span:last-child{font-size:1.05rem}
+  #burger{min-width:44px;min-height:44px;align-items:center;justify-content:center;flex-shrink:0}
+  #mobileMenu a{min-height:48px;display:flex;align-items:center}
+  #inicio{padding-top:6rem;padding-bottom:3.5rem}
+  #inicio .grid{gap:1.75rem}
+  #inicio .order-first{order:0}
+  #inicio .order-first svg{width:7.5rem}
+  #inicio h1{font-size:2.15rem;line-height:1.08;overflow-wrap:anywhere}
+  #inicio .flex.flex-wrap.gap-3{display:grid;grid-template-columns:1fr}
+  #inicio .flex.flex-wrap.gap-3 a{text-align:center;min-height:48px;display:flex;align-items:center;justify-content:center}
+  #inicio .flex.flex-wrap.gap-6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}
+  #inicio .flex.flex-wrap.gap-6 b{font-size:1rem}
+  #inicio .flex.flex-wrap.gap-6 span{font-size:.65rem;line-height:1.2;display:block}
+  section.py-20{padding-top:3.5rem;padding-bottom:3.5rem}
+  section.py-24{padding-top:4rem;padding-bottom:4rem}
+  section h2{line-height:1.12}
+  #sobre-prop .grid.grid-cols-3{grid-template-columns:1fr}
+  #proposta .grid.md\:grid-cols-2{padding:1.25rem;border-radius:1.25rem}
+  #proposta .bg-grafite{padding:1.5rem;border-radius:1rem}
+  #proposta a,#desafios button,#desafios a,#contato a{width:100%;min-height:48px;display:flex;align-items:center;justify-content:center;text-align:center}
+  #desafios .mt-8{display:grid;grid-template-columns:1fr;width:100%}
+  #sobre .grid{gap:2.5rem}
+  #sobre .absolute{left:.5rem}
+  #contato h2{font-size:2rem;line-height:1.12}
+  #contato .flex{display:grid;grid-template-columns:1fr}
+  footer .flex.justify-between{display:block}
+  footer .flex.justify-between span{display:block;margin-bottom:.5rem}
+}
+@media(max-width:359px){
+  header a.flex.items-center>svg{width:2rem}
+  header a.flex.items-center>span>span:first-child{max-width:10rem;font-size:.38rem}
+  #inicio h1{font-size:1.85rem}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body class="bg-offwhite text-grafite">
+
+<!-- HEADER -->
+<header class="fixed top-0 inset-x-0 z-50 bg-offwhite/90 backdrop-blur-md border-b border-black/5">
+<div class="max-w-6xl mx-auto px-5 h-20 flex items-center justify-between">
+<a href="#inicio" class="flex items-center gap-3">
+<svg viewBox="0 0 100 100" class="w-10 h-10 shrink-0"><g transform="rotate(0 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#6457A4"/></g><g transform="rotate(45 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#F0127A"/></g><g transform="rotate(90 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#FDB712"/></g><g transform="rotate(135 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#62C2AC"/></g><g transform="rotate(180 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#6457A4"/></g><g transform="rotate(225 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#F0127A"/></g><g transform="rotate(270 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#FDB712"/></g><g transform="rotate(315 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#62C2AC"/></g></svg>
+<span class="flex flex-col leading-none"><span class="font-display font-medium text-[0.5rem] sm:text-[0.55rem] tracking-[0.18em] text-magenta uppercase">Engajamento | Sustentabilidade | Governança</span><span class="font-display font-bold text-xl tracking-wider text-azul">DUMELA</span></span>
+</a>
+<nav class="hidden md:flex items-center gap-6">
+<a href="#atuacao" class="font-display font-medium text-sm text-grafite hover:text-magenta transition">Atuação</a>
+<a href="#proposta" class="font-display font-medium text-sm text-grafite hover:text-magenta transition">Assinatura</a>
+<a href="#desafios" class="font-display font-medium text-sm text-grafite hover:text-magenta transition">Desafios</a>
+<a href="#sobre" class="font-display font-medium text-sm text-grafite hover:text-magenta transition">Sobre</a>
+<a href="#contato" class="bg-magenta text-white font-display font-semibold px-5 py-2.5 rounded-full hover:bg-[#d20e6a] transition text-sm">Conversa estratégica</a>
+</nav>
+<button id="burger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+<span class="w-6 h-0.5 bg-azul rounded"></span><span class="w-6 h-0.5 bg-azul rounded"></span><span class="w-6 h-0.5 bg-azul rounded"></span>
+</button>
+</div>
+<div id="mobileMenu" class="mob md:hidden bg-offwhite border-t border-black/5 px-5">
+<a href="#atuacao" class="block py-3 font-display font-medium border-b border-black/5">Atuação</a>
+<a href="#proposta" class="block py-3 font-display font-medium border-b border-black/5">Assinatura</a>
+<a href="#desafios" class="block py-3 font-display font-medium border-b border-black/5">Desafios</a>
+<a href="#sobre" class="block py-3 font-display font-medium border-b border-black/5">Sobre</a>
+<a href="#contato" class="block py-3 font-display font-semibold text-magenta">Conversa estratégica →</a>
+</div>
+</header>
+
+<!-- HERO -->
+<section id="inicio" class="bg-offwhite pt-28 pb-16 px-5">
+<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+<div>
+<span class="inline-flex items-center gap-2 bg-azul text-white font-display text-xs px-4 py-2 rounded-full uppercase mb-5"><span class="w-2 h-2 rounded-full bg-amarelo"></span>Gestão de pessoas e processos</span>
+<h1 class="font-display font-bold text-3xl md:text-5xl text-azul leading-tight mb-4">Transformamos trajetórias comuns em jornadas <span class="text-magenta">extraordinárias</span>.</h1>
+<p class="text-base md:text-lg text-grafite/70 mb-7 max-w-lg">Atuação integrada em <b>pessoas, processos, cultura, liderança, experiência do cliente e resultados</b>.</p>
+<div class="flex flex-wrap gap-3 mb-8">
+<a href="#" id="waHero" target="_blank" class="bg-[#1fae6b] text-white font-display font-semibold px-6 py-3 rounded-full hover:bg-[#18975b] transition text-sm">Falar no WhatsApp</a>
+<a href="#proposta" class="border-2 border-azul text-azul font-display font-semibold px-6 py-3 rounded-full hover:bg-azul hover:text-white transition text-sm">Conhecer a proposta</a>
+</div>
+<div class="flex flex-wrap gap-6 border-t border-black/10 pt-6">
+<div><b class="block font-display text-xl text-azul">3 pilares</b><span class="text-xs text-grafite/60">Pessoas · Processos · Cultura</span></div>
+<div><b class="block font-display text-xl text-azul">6 frentes</b><span class="text-xs text-grafite/60">Atuação integrada</span></div>
+<div><b class="block font-display text-xl text-azul">100%</b><span class="text-xs text-grafite/60">Mensuração</span></div>
+</div>
+</div>
+<div class="flex justify-center order-first md:order-last">
+<svg viewBox="0 0 100 100" class="w-40 md:w-72 animate-spin" style="animation-duration:40s"><g transform="rotate(0 50 50)"><rect x="46" y="6" width="8" height="42" rx="4" fill="#6457A4"/></g><g transform="rotate(45 50 50)"><rect x="46" y="6" width="8" height="42" rx="4" fill="#F0127A"/></g><g transform="rotate(90 50 50)"><rect x="46" y="6" width="8" height="42" rx="4" fill="#FDB712"/></g><g transform="rotate(135 50 50)"><rect x="46" y="6" width="8" height="42" rx="4" fill="#62C2AC"/></g><g transform="rotate(180 50 50)"><rect x="46" y="6" width="8" height="42" rx="4" fill="#6457A4"/></g><g transform="rotate(225 50 50)"><rect x="46" y="6" width="8" height="42" rx="4" fill="#F0127A"/></g><g transform="rotate(270 50 50)"><rect x="46" y="6" width="8" height="42" rx="4" fill="#FDB712"/></g><g transform="rotate(315 50 50)"><rect x="46" y="6" width="8" height="42" rx="4" fill="#62C2AC"/></g></svg>
+</div>
+</div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre-prop" class="py-20 px-5 bg-offwhite">
+<div class="max-w-6xl mx-auto">
+<span class="font-display font-semibold text-xs tracking-widest uppercase text-magenta">Quem somos</span>
+<h2 class="font-display font-bold text-2xl md:text-4xl text-azul mt-3 mb-4">Dumela: a saudação que significa <span class="text-roxo">"Eu te vejo"</span></h2>
+<p class="text-base md:text-lg text-grafite/70 max-w-2xl mb-10">Ver cada organização como um organismo vivo, onde pessoas, processos e cultura precisam estar alinhados para prosperar.</p>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<div class="flex gap-4 bg-white border border-black/5 rounded-2xl p-6 shadow-sm"><div class="w-12 h-12 shrink-0 grid place-items-center bg-roxo text-white rounded-xl font-bold">✶</div><div><h3 class="font-display text-lg text-azul mb-1">Propósito</h3><p class="text-sm text-grafite/70">Transformar trajetórias comuns em jornadas extraordinárias.</p></div></div>
+<div class="flex gap-4 bg-white border border-black/5 rounded-2xl p-6 shadow-sm"><div class="w-12 h-12 shrink-0 grid place-items-center bg-verde text-white rounded-xl font-bold">✦</div><div><h3 class="font-display text-lg text-azul mb-1">Missão</h3><p class="text-sm text-grafite/70">Transformar a gestão em instrumento de consciência e evolução.</p></div></div>
+</div>
+<div>
+<div class="grid grid-cols-3 gap-3 mb-4">
+<div class="bg-white border border-black/5 rounded-xl p-4 text-center"><span class="font-display font-bold text-verde text-xs">01</span><h4 class="font-display mt-2 mb-1 text-sm">Pessoas</h4><p class="text-xs text-grafite/60">Engajamento</p></div>
+<div class="bg-white border border-black/5 rounded-xl p-4 text-center"><span class="font-display font-bold text-verde text-xs">02</span><h4 class="font-display mt-2 mb-1 text-sm">Processos</h4><p class="text-xs text-grafite/60">Estrutura</p></div>
+<div class="bg-white border border-black/5 rounded-xl p-4 text-center"><span class="font-display font-bold text-verde text-xs">03</span><h4 class="font-display mt-2 mb-1 text-sm">Cultura</h4><p class="text-xs text-grafite/60">Valores</p></div>
+</div>
+<p class="text-sm text-grafite/70">Toda entrega une <b>conhecimento</b>, <b>prática</b> e <b>mensuração</b>.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ATUAÇÃO -->
+<section id="atuacao" class="py-20 px-5 bg-azul text-white">
+<div class="max-w-6xl mx-auto">
+<span class="font-display font-semibold text-xs tracking-widest uppercase text-verde">Atuação integrada</span>
+<h2 class="font-display font-bold text-2xl md:text-4xl text-white mt-3 mb-10">Uma parceira estratégica para toda a organização</h2>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition"><h3 class="font-display text-lg mb-2">Pessoas</h3><p class="text-sm text-white/70">Gestão de talentos, lideranças e engajamento (PERMA).</p></div>
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition"><h3 class="font-display text-lg mb-2">Processos</h3><p class="text-sm text-white/70">Estruturação de cargos, rotinas e gestão por processos.</p></div>
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition"><h3 class="font-display text-lg mb-2">Cultura</h3><p class="text-sm text-white/70">Valores, clima organizacional, projetos VOA e FoFoCa.</p></div>
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition"><h3 class="font-display text-lg mb-2">Liderança</h3><p class="text-sm text-white/70">Liderança consciente: competências por nível (Korn Ferry).</p></div>
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition"><h3 class="font-display text-lg mb-2">Experiência do cliente</h3><p class="text-sm text-white/70">Jornada do cliente e atendimento humanizado.</p></div>
+<div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition"><h3 class="font-display text-lg mb-2">Resultados</h3><p class="text-sm text-white/70">Indicadores que comprovam impacto e sustentam crescimento.</p></div>
+</div>
+</div>
+</section>
+
+<!-- ASSINATURA -->
+<section id="proposta" class="py-20 px-5 bg-offwhite">
+<div class="max-w-6xl mx-auto">
+<span class="font-display font-semibold text-xs tracking-widest uppercase text-magenta">Destaque</span>
+<h2 class="font-display font-bold text-2xl md:text-4xl text-azul mt-3 mb-8">Gestão de Pessoas e Processos <span class="text-magenta">por Assinatura</span></h2>
+<div class="grid md:grid-cols-2 gap-8 bg-white border border-black/5 rounded-3xl p-8 shadow-lg">
+<div>
+<p class="text-base text-grafite/70 mb-5">A Dumela atua como <b>sócia estratégica recorrente</b>: presença mensal, método próprio e resultado mensurável.</p>
+<ul class="space-y-3 mb-6">
+<li class="flex gap-3 text-sm text-grafite/80"><span class="shrink-0 w-5 h-5 rounded-full bg-magenta text-white grid place-items-center text-xs font-bold">✓</span>Diagnóstico com Mapa Estratégico e Bússola de Gente</li>
+<li class="flex gap-3 text-sm text-grafite/80"><span class="shrink-0 w-5 h-5 rounded-full bg-magenta text-white grid place-items-center text-xs font-bold">✓</span>Estruturação de cargos, papéis e rotinas</li>
+<li class="flex gap-3 text-sm text-grafite/80"><span class="shrink-0 w-5 h-5 rounded-full bg-magenta text-white grid place-items-center text-xs font-bold">✓</span>Programas de engajamento, liderança e cultura</li>
+<li class="flex gap-3 text-sm text-grafite/80"><span class="shrink-0 w-5 h-5 rounded-full bg-magenta text-white grid place-items-center text-xs font-bold">✓</span>Mensuração de progresso por ciclo</li>
+</ul>
+<a href="#contato" class="inline-flex bg-magenta text-white font-display font-semibold px-6 py-3 rounded-full hover:bg-[#d20e6a] transition text-sm">Solicitar conversa estratégica</a>
+</div>
+<div class="bg-grafite text-white rounded-3xl p-8 text-center">
+<span class="font-display text-xs uppercase tracking-widest text-amarelo">Planos de assinatura</span>
+<h3 class="font-display text-2xl mt-2 mb-1">Presença mensal dedicada</h3>
+<div class="font-display font-bold text-4xl text-amarelo my-4">R$ 3.000<span class="text-sm text-white/50">/mês</span></div>
+<ul class="text-left space-y-2 mb-6">
+<li class="flex gap-2 text-white/80 text-sm"><span class="text-magenta font-bold">•</span>20h por mês dedicadas na empresa</li>
+<li class="flex gap-2 text-white/80 text-sm"><span class="text-magenta font-bold">•</span>Ciclos de 12 ou 24 semanas</li>
+<li class="flex gap-2 text-white/80 text-sm"><span class="text-magenta font-bold">•</span>Diagnóstico + plano + execução + mensuração</li>
+</ul>
+<a href="#" id="waProp" target="_blank" class="inline-flex bg-white text-azul font-display font-semibold px-6 py-3 rounded-full hover:shadow-lg transition text-sm">Quero saber mais</a>
+<p class="text-white/40 text-xs mt-3">Valores de referência.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DESAFIOS -->
+<section id="desafios" class="py-20 px-5 bg-white">
+<div class="max-w-6xl mx-auto">
+<span class="font-display font-semibold text-xs tracking-widest uppercase text-magenta">Autoavaliação</span>
+<h2 class="font-display font-bold text-2xl md:text-4xl text-azul mt-3 mb-4">Quais desafios sua organização enfrenta?</h2>
+<p class="text-base text-grafite/70 max-w-2xl mb-8">Marque e envie pelo WhatsApp — a conversa começa por aí.</p>
+<div id="listaDesafios" class="grid sm:grid-cols-2 gap-3">
+<label class="flex items-start gap-3 border-2 border-black/10 rounded-xl p-4 cursor-pointer hover:border-verde bg-offwhite transition"><input type="checkbox" value="Cultura desalinhada" class="mt-1 accent-verde w-5 h-5"><span><b class="font-display text-azul">Cultura desalinhada</b><br><small class="text-grafite/60 text-sm">Valores não norteiam decisões.</small></span></label>
+<label class="flex items-start gap-3 border-2 border-black/10 rounded-xl p-4 cursor-pointer hover:border-verde bg-offwhite transition"><input type="checkbox" value="Comunicação falha" class="mt-1 accent-verde w-5 h-5"><span><b class="font-display text-azul">Comunicação falha</b><br><small class="text-grafite/60 text-sm">Ruídos e retrabalho por falta de clareza.</small></span></label>
+<label class="flex items-start gap-3 border-2 border-black/10 rounded-xl p-4 cursor-pointer hover:border-verde bg-offwhite transition"><input type="checkbox" value="Resultados inconsistentes" class="mt-1 accent-verde w-5 h-5"><span><b class="font-display text-azul">Resultados inconsistentes</b><br><small class="text-grafite/60 text-sm">Baixa previsibilidade financeira.</small></span></label>
+<label class="flex items-start gap-3 border-2 border-black/10 rounded-xl p-4 cursor-pointer hover:border-verde bg-offwhite transition"><input type="checkbox" value="Alta rotatividade" class="mt-1 accent-verde w-5 h-5"><span><b class="font-display text-azul">Alta rotatividade</b><br><small class="text-grafite/60 text-sm">Dificuldade em reter talentos.</small></span></label>
+<label class="flex items-start gap-3 border-2 border-black/10 rounded-xl p-4 cursor-pointer hover:border-verde bg-offwhite transition"><input type="checkbox" value="Lideranças sem desenvolvimento" class="mt-1 accent-verde w-5 h-5"><span><b class="font-display text-azul">Lideranças sem desenvolvimento</b><br><small class="text-grafite/60 text-sm">Gestores sem competências estruturadas.</small></span></label>
+<label class="flex items-start gap-3 border-2 border-black/10 rounded-xl p-4 cursor-pointer hover:border-verde bg-offwhite transition"><input type="checkbox" value="Crescimento sem estrutura" class="mt-1 accent-verde w-5 h-5"><span><b class="font-display text-azul">Crescimento sem estrutura</b><br><small class="text-grafite/60 text-sm">Processos não acompanham a expansão.</small></span></label>
+</div>
+<div class="mt-8 flex flex-wrap items-center gap-4">
+<button id="btnDesafios" class="bg-[#1fae6b] text-white font-display font-semibold px-6 py-3 rounded-full hover:bg-[#18975b] transition text-sm">Enviar seleção pelo WhatsApp</button>
+<a href="#contato" class="border-2 border-azul text-azul font-display font-semibold px-6 py-3 rounded-full hover:bg-azul hover:text-white transition text-sm">Preferir e-mail</a>
+</div>
+</div>
+</section>
+
+<!-- MÉTODO -->
+<section id="metodo" class="py-20 px-5 bg-offwhite">
+<div class="max-w-6xl mx-auto">
+<span class="font-display font-semibold text-xs tracking-widest uppercase text-magenta">Como trabalhamos</span>
+<h2 class="font-display font-bold text-2xl md:text-4xl text-azul mt-3 mb-10">Método: do diagnóstico ao resultado</h2>
+<div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+<div class="bg-white border border-black/5 rounded-2xl p-6"><div class="font-display font-bold text-3xl text-transparent" style="-webkit-text-stroke:1.6px #6457A4">01</div><h3 class="font-display text-lg text-azul mt-3 mb-2">Diagnóstico</h3><p class="text-sm text-grafite/60">Mapa Estratégico e Bússola de Gente.</p></div>
+<div class="bg-white border border-black/5 rounded-2xl p-6"><div class="font-display font-bold text-3xl text-transparent" style="-webkit-text-stroke:1.6px #6457A4">02</div><h3 class="font-display text-lg text-azul mt-3 mb-2">Desenho</h3><p class="text-sm text-grafite/60">Plano alinhado à cultura e prioridades.</p></div>
+<div class="bg-white border border-black/5 rounded-2xl p-6"><div class="font-display font-bold text-3xl text-transparent" style="-webkit-text-stroke:1.6px #6457A4">03</div><h3 class="font-display text-lg text-azul mt-3 mb-2">Implementação</h3><p class="text-sm text-grafite/60">Rotinas e programas na prática.</p></div>
+<div class="bg-white border border-black/5 rounded-2xl p-6"><div class="font-display font-bold text-3xl text-transparent" style="-webkit-text-stroke:1.6px #6457A4">04</div><h3 class="font-display text-lg text-azul mt-3 mb-2">Mensuração</h3><p class="text-sm text-grafite/60">Indicadores que comprovam impacto.</p></div>
+</div>
+</div>
+</section>
+
+<!-- HELEN -->
+<section id="sobre" class="py-20 px-5 bg-white">
+<div class="max-w-6xl mx-auto">
+<span class="font-display font-semibold text-xs tracking-widest uppercase text-magenta">Quem conduz</span>
+<h2 class="font-display font-bold text-2xl md:text-4xl text-azul mt-3 mb-10">A especialista por trás da consultoria</h2>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="relative">
+<div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
+<img src="https://generated-images.adapta.one/hkarruda%40gmail.com/019ff339-c959-722e-b686-088d3788536e/2026-08-12T00-29-08-822Z_Original_user_intent_Tool_generated_image_directi.png" alt="Helen Arruda — Fundadora da Dumela" class="w-full h-full object-cover" style="object-position:center 35%">
+</div>
+<div class="absolute -bottom-4 -left-4 bg-magenta text-white rounded-2xl px-5 py-4 shadow-lg"><b class="block font-display text-lg">+10 anos</b><span class="text-xs">de prática em gestão</span></div>
+</div>
+<div>
+<h3 class="font-display text-2xl text-azul">Helen Arruda</h3>
+<div class="font-display font-semibold text-magenta mb-5">Administradora · Consultora Organizacional · Fundadora</div>
+<p class="text-grafite/70 mb-3">Administradora e pós-graduanda em Neurociência e Psicologia Positiva, Helen conduz a Dumela com mais de uma década de trajetória em logística, serviços e startups. Sua especialidade: diagnosticar e redesenhar processos, implementar sistemas e desenvolver programas de cultura e engajamento.</p>
+<p class="text-grafite/70 mb-5">Foi na prática que nasceu a percepção central da Dumela: <b>toda ineficiência operacional tem uma raiz humana</b>, seja comunicação, liderança ou clareza de propósito.</p>
+<div class="flex flex-wrap gap-2">
+<span class="font-display text-sm bg-offwhite border border-black/10 text-azul rounded-full px-4 py-2">Bússola de Gente</span>
+<span class="font-display text-sm bg-roxo/10 border border-roxo/25 text-roxo rounded-full px-4 py-2">Alkimia dos Negócios</span>
+<span class="font-display text-sm bg-verde/12 border border-verde/35 text-[#1e7a68] rounded-full px-4 py-2">Mapa Estratégico</span>
+<span class="font-display text-sm bg-offwhite border border-black/10 text-azul rounded-full px-4 py-2">PERMA</span>
+<span class="font-display text-sm bg-roxo/10 border border-roxo/25 text-roxo rounded-full px-4 py-2">VOA · FoFoCa</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FRASES -->
+<section class="py-20 px-5 bg-offwhite">
+<div class="max-w-6xl mx-auto">
+<span class="font-display font-semibold text-xs tracking-widest uppercase text-magenta">Tom de voz</span>
+<h2 class="font-display font-bold text-2xl md:text-4xl text-azul mt-3 mb-8">A Dumela não tem todas as respostas. Tem as perguntas certas.</h2>
+<div class="grid md:grid-cols-2 gap-4">
+<div class="bg-white border border-black/5 border-l-4 border-l-verde rounded-2xl p-6 font-display text-lg text-azul">"Que futuro a sua organização está construindo com as decisões de hoje?"</div>
+<div class="bg-white border border-black/5 border-l-4 border-l-roxo rounded-2xl p-6 font-display text-lg text-azul">"Liderar não é ter todas as respostas. É fazer <b class="text-magenta">as perguntas certas</b>."</div>
+<div class="bg-white border border-black/5 border-l-4 border-l-roxo rounded-2xl p-6 font-display text-lg text-azul">"Não existe transformação cultural sem transformação nas <b class="text-magenta">escolhas diárias</b>."</div>
+<div class="bg-white border border-black/5 border-l-4 border-l-verde rounded-2xl p-6 font-display text-lg text-azul">"Se não se comprometer com nada, vai se distrair <b class="text-magenta">com tudo</b>."</div>
+</div>
+</div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="py-24 px-5 bg-azul text-white text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-display font-bold text-3xl md:text-5xl text-white">Vamos conversar sobre a <span class="text-amarelo">jornada da sua organização?</span></h2>
+<p class="text-lg text-white/80 mt-5 mb-8 max-w-xl mx-auto">Uma conversa estratégica, sem compromisso, para entender seu momento e mostrar como a Dumela pode apoiar o próximo nível de maturidade em gestão.</p>
+<div class="flex flex-wrap gap-3 justify-center">
+<a href="#" id="waFinal" target="_blank" class="bg-[#1fae6b] text-white font-display font-semibold px-7 py-3.5 rounded-full hover:bg-[#18975b] transition">Conversar no WhatsApp</a>
+<a href="mailto:contato@dumelaconsultoria.com.br" class="bg-white text-azul font-display font-semibold px-7 py-3.5 rounded-full hover:shadow-lg transition">Enviar e-mail</a>
+</div>
+<p class="mt-5 text-white/50 text-sm">ou escreva para <a href="mailto:contato@dumelaconsultoria.com.br" class="text-verde font-semibold">contato@dumelaconsultoria.com.br</a></p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-grafite text-white/70 py-14 px-5">
+<div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 mb-10">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<svg viewBox="0 0 100 100" class="w-10 h-10"><g transform="rotate(0 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#6457A4"/></g><g transform="rotate(45 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#F0127A"/></g><g transform="rotate(90 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#FDB712"/></g><g transform="rotate(135 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#62C2AC"/></g><g transform="rotate(180 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#6457A4"/></g><g transform="rotate(225 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#F0127A"/></g><g transform="rotate(270 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#FDB712"/></g><g transform="rotate(315 50 50)"><rect x="46" y="8" width="8" height="38" rx="4" fill="#62C2AC"/></g></svg>
+<span class="flex flex-col leading-none"><span class="font-display text-[0.55rem] tracking-[0.2em] text-amarelo uppercase">Engajamento | Sustentabilidade | Governança</span><span class="font-display font-bold text-xl tracking-wider text-white">DUMELA</span></span>
+</div>
+<p class="text-sm max-w-xs">Transformamos trajetórias comuns em jornadas extraordinárias.</p>
+</div>
+<div>
+<h4 class="text-white mb-4">Navegação</h4>
+<ul class="list-none p-0 space-y-2">
+<li><a href="#atuacao" class="text-sm hover:text-amarelo transition">Atuação</a></li>
+<li><a href="#proposta" class="text-sm hover:text-amarelo transition">Assinatura</a></li>
+<li><a href="#desafios" class="text-sm hover:text-amarelo transition">Desafios</a></li>
+<li><a href="#sobre" class="text-sm hover:text-amarelo transition">Sobre Helen</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white mb-4">Contato</h4>
+<p class="text-sm mb-2">📍 Fortaleza — CE</p>
+<p class="text-sm mb-2">📧 <a href="mailto:contato@dumelaconsultoria.com.br" class="text-verde font-semibold">contato@dumelaconsultoria.com.br</a></p>
+<p class="text-sm">💬 <a href="#" id="waFooter" class="text-verde font-semibold">WhatsApp</a></p>
+</div>
+</div>
+<div class="border-t border-white/10 pt-6 flex justify-between flex-wrap gap-3 text-xs">
+<span>© <span id="ano"></span> Dumela Consultoria. Todos os direitos reservados.</span>
+<span>Identidade visual: <span class="text-amarelo font-semibold">Sistema de Direção de Arte Dumela v1</span></span>
+</div>
+</footer>
+
+<script>
+var WA='5585936182341';
+var MSG='Olá, Dumela! Gostaria de uma conversa estratégica sobre gestão.';
+function wa(m){return'https://wa.me/'+WA+'?text='+encodeURIComponent(m);}
+['waHero','waProp','waFinal','waFooter'].forEach(function(id){var e=document.getElementById(id);if(e)e.href=wa(MSG);});
+var burger=document.getElementById('burger');
+var mm=document.getElementById('mobileMenu');
+burger.addEventListener('click',function(){mm.classList.toggle('open');});
+mm.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mm.classList.remove('open');});});
+document.getElementById('btnDesafios').addEventListener('click',function(){
+var s=Array.prototype.slice.call(document.querySelectorAll('#listaDesafios input:checked')).map(function(i){return'• '+i.value;});
+var m=s.length?'Olá, Dumela! Identifiquei estes desafios:\n\n'+s.join('\n')+'\n\nGostaria de agendar uma conversa.':MSG;
+window.open(wa(m),'_blank');});
+document.getElementById('ano').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
